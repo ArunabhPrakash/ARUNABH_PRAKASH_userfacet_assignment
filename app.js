@@ -98,9 +98,7 @@ app.get('/allSurveys', (req, res) => {
     res.json(surveyResponses);
 });
 
-
 app.get('/getPage', (req, res) => {
-    page_no++;
     res.json(page_no);
 });
 
@@ -148,9 +146,21 @@ app.post('/submit', (req, res) => {
     });      
 });
 
-app.get('/displayPaginated', (req, res) => {
+app.post('/displayNext', (req, res) => {
+    const startIndex = (page_no - 1) * 5;
+    if (startIndex < surveyResponses.length) {
+        page_no++;
+    }
     res.sendFile(__dirname + '/simresults.html');
 });
+
+app.post('/displayBack', (req, res) => {
+    if (page_no>0 ) {
+        page_no--;
+    } 
+    res.sendFile(__dirname + '/simresults.html');
+});
+
 
 app.post('/filter', (req, res) => {
     const candidateName = req.body.candidateName;
