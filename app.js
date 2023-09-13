@@ -88,12 +88,20 @@ fs.readFile('survey_responses.json', 'utf8', (err, data) => {
     surveyResponses = JSON.parse(data);
 });
 
+let page_no = 0;
 app.get('/', (req, res) => {
+    page_no = 0;
     res.sendFile(__dirname + '/index.html');
 });
 
 app.get('/allSurveys', (req, res) => {
     res.json(surveyResponses);
+});
+
+
+app.get('/getPage', (req, res) => {
+    page_no++;
+    res.json(page_no);
 });
 
 app.get('/survey', (req, res) => {
@@ -140,6 +148,9 @@ app.post('/submit', (req, res) => {
     });      
 });
 
+app.get('/displayPaginated', (req, res) => {
+    res.sendFile(__dirname + '/simresults.html');
+});
 
 app.post('/filter', (req, res) => {
     const candidateName = req.body.candidateName;
@@ -204,10 +215,8 @@ app.post('/searchQuery', (req, res) => {
   
 });
 
-// http://localhost:5000/similarity
-// http://localhost:5000/similarity?page=2
 app.get('/similarity', (req, res) => {
-    const page = parseInt(req.query.page) || 1; // Current page number
+    page = parseInt(req.query.page) || 1; // Current page number
     const pageSize = 5; // Number of results per page
 
     const startIndex = (page - 1) * pageSize;
@@ -217,38 +226,40 @@ app.get('/similarity', (req, res) => {
 
     // Ensure pagination bounds
     if (startIndex >= totalCandidates) {
-        const error = new HttpError('Candidate not found', 404);
-        throw error;
+        res.json("No more responses!");
+    }
+    else{
+        const similarityMatrix = [];
+    
+        // Iterate through all pairs of candidates
+        for (let i = startIndex; i < endIndex && i < totalCandidates; i++) {
+        for (let j = i + 1; j < totalCandidates; j++) {
+            const candidate1 = surveyResponses[i];
+            const candidate2 = surveyResponses[j];
+    
+            // Calculate similarity (replace this with your similarity calculation function)
+            const similarityScore = calculateSimilarity(candidate1,candidate2);
+    
+            // Store the similarity score and candidate names in the matrix
+            similarityMatrix.push({
+            candidate1: candidate1.candidateName,
+            candidate2: candidate2.candidateName,
+            similarity: similarityScore,
+            });
+        }
+        }
+
+        // Format the response as user-readable JSON
+        const formattedResponse = similarityMatrix.map((entry) => ({
+            Candidates: `${entry.candidate1} and ${entry.candidate2}`,
+            SimilarityScore: entry.similarity,
+        }));
+
+        // Respond with the user-friendly JSON
+        res.json(formattedResponse);
     }
 
-    const similarityMatrix = [];
-  
-    // Iterate through all pairs of candidates
-    for (let i = startIndex; i < endIndex && i < totalCandidates; i++) {
-      for (let j = i + 1; j < totalCandidates; j++) {
-        const candidate1 = surveyResponses[i];
-        const candidate2 = surveyResponses[j];
-  
-        // Calculate similarity (replace this with your similarity calculation function)
-        const similarityScore = calculateSimilarity(candidate1,candidate2);
-  
-        // Store the similarity score and candidate names in the matrix
-        similarityMatrix.push({
-          candidate1: candidate1.candidateName,
-          candidate2: candidate2.candidateName,
-          similarity: similarityScore,
-        });
-      }
-    }
-
-    // Format the response as user-readable JSON
-    const formattedResponse = similarityMatrix.map((entry) => ({
-        Candidates: `${entry.candidate1} and ${entry.candidate2}`,
-        SimilarityScore: entry.similarity,
-    }));
-
-    // Respond with the user-friendly JSON
-    res.json(formattedResponse);
+    
 });
 
 app.use((req, res, next) => {

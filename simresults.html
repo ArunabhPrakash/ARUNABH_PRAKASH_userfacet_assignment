@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Results</title>
+</head>
+<body>
+  <h1>Similarity Results</h1>
+
+  <h2>Displaying similarities between 5 responses and others:</h2>
+  <pre id="jsonData">
+    <!-- JSON data will be inserted here -->
+  </pre>
+
+  <!-- <form action="/displayPaginated" id="form1" method="GET">
+    <button type="submit">Back</button>
+  </form> -->
+
+  <form action="/displayPaginated" id="form1" method="GET">
+    <button type="submit">Next</button>
+  </form>
+
+  <script>
+    // JavaScript code for handling button click and displaying JSON data
+    const refreshButton = document.getElementById('refreshButton');
+    const jsonDataElement = document.getElementById('jsonData');
+    let page = 1;
+    // Function to fetch and display JSON data
+    function fetchData() {
+        let url = `/similarity?page=${page}`;
+
+        fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+            // Convert JSON data to a string and display it
+            jsonDataElement.textContent = JSON.stringify(data, null, 2);
+            })
+            .catch((error) => {
+            console.error('Error fetching data:', error);
+            });
+    }
+    // Fetch the updated page number and call fetchData
+    fetch(`/getPage`)
+        .then((response) => response.json())
+        .then((data) => {
+          page = data;
+          // Fetch and display data when the page loads
+            fetchData();
+        })
+        .catch((error) => {
+          console.error('Error fetching data:', error);
+        });
+
+    
+
+    
+  </script>
+</body>
+</html>

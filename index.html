@@ -8,17 +8,19 @@
   <ul id="surveyList">
     <!-- Survey items will be dynamically generated here -->
   </ul>
-  <br>
+
+  <h2>Fill the Survey</h2>
+  <form action="/survey"  method="GET">
+    <button type="submit">Display Similarity</button>
+  </form>
 
   <h2>Display paginated similarity among all survey responses</h2>
-  <form action="/similarity" id="form1" method="GET">
-    <label for="page">Page:</label>
-    <input type="number" id="page" name="page" min="1" value="1" required>
-    <button type="submit">Get Similarity</button>
+  <form action="/displayPaginated"  method="GET">
+    <button type="submit">Display Similarity</button>
   </form>
 
   <h2>Filter similarity of a single candidate</h2>
-  <form action="/filter" id="form2" method="POST">
+  <form action="/filter" method="POST">
     <label for="candidateName">Candidate Name:</label>
     <input type="text" id="candidateName" name="candidateName" required>
     <button type="submit">Filter</button>

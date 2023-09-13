@@ -159,5 +159,35 @@
         "option": "Option 2"
       }
     ]
+  },
+  {
+    "candidateName": "priya",
+    "responses": [
+      {
+        "question": "Question 1",
+        "option": "Option 2"
+      },
+      {
+        "question": "Question 2",
+        "option": "Option 1"
+      }
+    ]
+  },
+  {
+    "candidateName": "surya",
+    "responses": [
+      {
+        "question": "Question 1",
+        "option": "Option 1"
+      },
+      {
+        "question": "Question 2",
+        "option": "Option 1"
+      },
+      {
+        "question": "Question 4",
+        "option": "Option 2"
+      }
+    ]
   }
 ]
