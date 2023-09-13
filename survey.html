@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Survey Form</title>
+</head>
+<body>
+    <form action="/submit" method="POST" id="surveyForm">
+        <label for="candidateName">Candidate's Name:</label>
+        <input type="text" id="candidateName" name="candidateName" required><br><br>
+        <!-- Questions will be dynamically generated here -->
+        
+        <script>
+          const numQuestions = 20; // Number of questions
+      
+          const form = document.getElementById('surveyForm');
+      
+          for (let i = 1; i <= numQuestions; i++) {
+            const fieldset = document.createElement('fieldset');
+            const legend = document.createElement('legend');
+            legend.textContent = `Question ${i}`;
+            fieldset.appendChild(legend);
+      
+            for (let j = 1; j <= 10; j++) {
+              const label = document.createElement('label');
+              const input = document.createElement('input');
+              input.type = 'radio';
+              input.name = `q${i}`;
+              input.value = j;
+              label.appendChild(input);
+              label.appendChild(document.createTextNode(`Option ${j}`));
+              fieldset.appendChild(label);
+            }
+      
+            form.appendChild(fieldset);
+          }
+        </script>
+    
+        <!-- Submit button at the end of the form -->
+        <button type="submit">Submit</button>
+      </form>
+</body>
+</html>

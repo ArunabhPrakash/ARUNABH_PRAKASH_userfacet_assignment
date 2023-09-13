@@ -1,0 +1,163 @@
+[
+  {
+    "candidateName": "Ritika",
+    "responses": [
+      {
+        "question": "Question 1",
+        "option": "Option 1"
+      },
+      {
+        "question": "Question 2",
+        "option": "Option 1"
+      },
+      {
+        "question": "Question 18",
+        "option": "Option 5"
+      }
+    ]
+  },
+  {
+    "candidateName": "Arunabh",
+    "responses": [
+      {
+        "question": "Question 1",
+        "option": "Option 1"
+      },
+      {
+        "question": "Question 4",
+        "option": "Option 1"
+      }
+    ]
+  },
+  {
+    "candidateName": "gorseet",
+    "responses": [
+      {
+        "question": "Question 1",
+        "option": "Option 3"
+      },
+      {
+        "question": "Question 2",
+        "option": "Option 1"
+      },
+      {
+        "question": "Question 3",
+        "option": "Option 2"
+      },
+      {
+        "question": "Question 4",
+        "option": "Option 1"
+      }
+    ]
+  },
+  {
+    "candidateName": "simmy",
+    "responses": [
+      {
+        "question": "Question 1",
+        "option": "Option 2"
+      },
+      {
+        "question": "Question 2",
+        "option": "Option 4"
+      },
+      {
+        "question": "Question 3",
+        "option": "Option 2"
+      },
+      {
+        "question": "Question 4",
+        "option": "Option 1"
+      }
+    ]
+  },
+  {
+    "candidateName": "raghav",
+    "responses": [
+      {
+        "question": "Question 1",
+        "option": "Option 1"
+      },
+      {
+        "question": "Question 20",
+        "option": "Option 1"
+      }
+    ]
+  },
+  {
+    "candidateName": "rachit",
+    "responses": [
+      {
+        "question": "Question 20",
+        "option": "Option 2"
+      }
+    ]
+  },
+  {
+    "candidateName": "ranveer",
+    "responses": [
+      {
+        "question": "Question 19",
+        "option": "Option 1"
+      },
+      {
+        "question": "Question 20",
+        "option": "Option 2"
+      }
+    ]
+  },
+  {
+    "candidateName": "deepika",
+    "responses": [
+      {
+        "question": "Question 19",
+        "option": "Option 2"
+      },
+      {
+        "question": "Question 20",
+        "option": "Option 2"
+      }
+    ]
+  },
+  {
+    "candidateName": "Sanam",
+    "responses": [
+      {
+        "question": "Question 1",
+        "option": "Option 1"
+      },
+      {
+        "question": "Question 2",
+        "option": "Option 2"
+      },
+      {
+        "question": "Question 3",
+        "option": "Option 1"
+      },
+      {
+        "question": "Question 4",
+        "option": "Option 2"
+      },
+      {
+        "question": "Question 6",
+        "option": "Option 3"
+      },
+      {
+        "question": "Question 8",
+        "option": "Option 2"
+      },
+      {
+        "question": "Question 10",
+        "option": "Option 4"
+      },
+      {
+        "question": "Question 16",
+        "option": "Option 2"
+      },
+      {
+        "question": "Question 19",
+        "option": "Option 2"
+      }
+    ]
+  }
+]
